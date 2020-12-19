@@ -1,4 +1,4 @@
-# projectRegen
+# ReactProjectLab11
 React App Lab 11
 
 
