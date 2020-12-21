@@ -8,6 +8,6 @@ React App Lab 11
 3: npm i
 4: npm i axios
 5: npm i -g json-server
-6: json-server db.json --port 3001
+6: npm run api
 7: npm start
 8: Open on a browser http://localhost:3000/
