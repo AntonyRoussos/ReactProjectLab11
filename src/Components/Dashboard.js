@@ -13,11 +13,11 @@ export const Dashboard = () => {
 
   useMemo(() => {
     Requests.getCourses5().then((response) => {
-        console.log("GET COURSES RESPONSE:", response);
+        
         setCoursers5(response.data);
       });
     Requests.getStats().then((response) => {
-      console.log("GET STATS RESPONSE:", response);
+      
       setStats(response.data);
     });
   }, []);

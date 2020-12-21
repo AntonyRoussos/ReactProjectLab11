@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Button, Card, ListGroup, ListGroupItem, Modal, Form } from "react-bootstrap";
+import { Button, Card, ListGroup, ListGroupItem, Modal } from "react-bootstrap";
 import Requests from "../Requests/Requests";
 import EditCourse from "./EditCourse";
 
@@ -40,7 +40,7 @@ export const Course = (props) => {
             <Button variant ="danger" style={{margin: 10}}
               onClick={(e) =>
                 Requests.deleteCourse(courseID).then((response) => {
-                  console.log("THEN:", response);
+              
                   history.push("/allCourses")
                 })
               }>Delete

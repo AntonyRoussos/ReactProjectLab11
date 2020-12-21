@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 export const CourseCard = ({ course }) => {
-  console.log("COURSE:", course);
+ 
   return (
   
     <Card style={{ maxWidth: '22%', minWidth: '22%' ,flex: 1 ,padding: 10 , margin: 25}}>

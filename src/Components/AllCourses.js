@@ -9,7 +9,6 @@ export const AllCourses = () => {
 
   useMemo(() => {
     Requests.getCourses().then((response) => {
-      console.log("GET COURSES RESPONSE:", response);
       setCoursers(response.data);
     });
   }, []);

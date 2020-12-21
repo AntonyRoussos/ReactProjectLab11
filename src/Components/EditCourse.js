@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form ,Button,Alert} from 'react-bootstrap';
+import { Form ,Button} from 'react-bootstrap';
 import Requests from "../Requests/Requests";
 
 export default class EditCourse extends React.Component {
@@ -31,7 +31,7 @@ export default class EditCourse extends React.Component {
     }
     getData=() =>{
         Requests.getCourse(this.props.dataFromParent).then((response) => {
-        console.log("THEN:", response.data);
+       
         this.setState({ title: response.data.title,price: response.data.price,dates: response.data.dates,
             open:response.data.open, imagePath:response.data.imagePath, description:response.data.description,
             duration:response.data.duration,flag:false
@@ -70,7 +70,7 @@ export default class EditCourse extends React.Component {
     submit = e => {
         e.preventDefault();
         this.state.id = Math.random()*10000000000000000;
-        console.log(this.props.dataFromParent)
+        
         fetch("http://localhost:3001/courses/"+this.props.dataFromParent, {
             method: 'PUT',
             body: JSON.stringify({
@@ -88,7 +88,7 @@ export default class EditCourse extends React.Component {
             headers: { 'Content-Type': 'application/json' },
         })
             .then(res => res.json())
-            .then(json => console.log(json))
+            
         this.setState({ success: true });
         
     }
