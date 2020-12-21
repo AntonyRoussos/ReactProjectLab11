@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { Button, Card, ListGroup, ListGroupItem, Modal, Form } from "react-bootstrap";
 import Requests from "../Requests/Requests";
+import EditCourse from "./EditCourse";
 
 const checkInstructor = (instructors,instructorId)=> { 
   return instructors.includes(instructorId)
@@ -19,9 +20,7 @@ export const Course = (props) => {
       .then((response) => setInstructors(response.data));
   }, []);
 
-  function handleSubmit(){
 
-  }
 
   function DeleteCourse() {
     const [show, setShow] = useState(false);
@@ -65,58 +64,10 @@ export const Course = (props) => {
             <Modal.Title>Edit Course</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form.Group controlId="Title">
-              <Form.Label>Title:</Form.Label>
-              <Form.Control type="text" defaultValue={course.title} />
-            </Form.Group>
-            <Form.Group id="Bookable">
-               {course.open?<Form.Check type="checkbox" label="Course Bookable" defaultChecked/>:<Form.Check type="checkbox" label="Course Bookable" />}
-            </Form.Group>
-            <Form.Group controlId="Description">
-              <Form.Label>Description:</Form.Label>
-              <Form.Control as="textarea" rows={3}  defaultValue={course.description}/>
-            </Form.Group>
-            <Form.Group id="Instructors">
-              <Form.Label>Instructors:</Form.Label>
-                {instructors.map((instructor, index) => {
-                return  checkInstructor(course.instructors?course.instructors:[] , instructor.id)? <div key={index} >
-                  <Form.Check type="checkbox" label={instructor.name.first +" "+ instructor.name.last} defaultChecked/>
-                </div>:<Form.Check type="checkbox"  label={instructor.name.first  +" "+ instructor.name.last}/>})}
-            </Form.Group>
-            <Form.Row>
-              <Form.Group style={{margin: 10}} controlId="NormalPrice">
-                <Form.Label>Normal Price:</Form.Label>
-                <Form.Control type="text" defaultValue={course.price?course.price.normal:""} />
-              </Form.Group>
-              <Form.Group  style={{margin: 10}} controlId="EarlyPrice">
-                <Form.Label>Early Price:</Form.Label>
-                <Form.Control type="text" defaultValue={course.price?course.price.early_bird:""} />
-              </Form.Group>
-            </Form.Row>
-            <Form.Row>
-              <Form.Group style={{margin: 10}} controlId="StartDate">
-                <Form.Label>Start Date:</Form.Label>
-                <Form.Control type="text" defaultValue={course.dates?course.dates.start_date:""} />
-              </Form.Group>
-              <Form.Group  style={{margin: 10}} controlId="EndDate">
-                <Form.Label>End Date:</Form.Label>
-                <Form.Control type="text" defaultValue={course.dates?course.dates.end_date:""} />
-              </Form.Group>
-            </Form.Row>
-            <Form.Group controlId="Duration">
-              <Form.Label>Duration:</Form.Label>
-              <Form.Control type="text" defaultValue={course.duration} />
-            </Form.Group>
-            <Form.Group controlId="ImagePath:">
-              <Form.Label>Image Path:</Form.Label>
-              <Form.Control type="text" defaultValue={course.imagePath} />
-            </Form.Group>
+            <EditCourse dataFromParent = {props.match.params.id}></EditCourse>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>Cancel</Button>
-            <Button variant ="info" style={{margin: 10}}
-             onClick={handleSubmit}>Submit
-            </Button>
+            <Button variant="secondary" onClick={handleClose}>Close</Button>
           </Modal.Footer>
         </Modal>
       </>

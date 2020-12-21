@@ -1,7 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { AllCourses } from "./Components/AllCourses";
-import { NewCourse } from "./Components/NewCourse";
+import  NewCourse from './Components/NewCourse';
+import EditCourse from './Components/EditCourse';
 import { Dashboard } from "./Components/Dashboard";
 import {
   BrowserRouter as Router,

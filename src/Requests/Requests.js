@@ -48,18 +48,6 @@ const deleteCourse = (courseID) => {
   });
 };
 
-const updateCourse = (courseID, course) => {
-  return axios({
-    method: "put",
-    url: "http://127.0.0.1:3001/courses/" + courseID,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify()
-  }).then((response) => {
-    return response;
-  });
-};
 
 const getInsructors = () => {
   return axios({
@@ -90,7 +78,6 @@ const Requests = {
   getCourses5: getCourses5,
   getCourse: getCourse,
   deleteCourse: deleteCourse,
-  updateCourse: updateCourse,
   getInsructors: getInsructors,
   getStats:getStats,
 };
