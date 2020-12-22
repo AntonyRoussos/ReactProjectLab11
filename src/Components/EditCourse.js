@@ -49,11 +49,21 @@ export default class EditCourse extends React.Component {
     InstructorsHandler = (event) => {
      
         if (event.target.name === "john") {
-            this.state.instructors.push("01");
+             if( (this.state.instructors.includes("01"))){
+                   this.state.instructors.pop("01");
+            }
+            else{
+                this.state.instructors.push("01");
+            }
         }
         if (event.target.name === "yiannis") {
-            this.state.instructors.push("02");
-        }
+            if( (this.state.instructors.includes("02"))){
+                  this.state.instructors.pop("02");
+           }
+           else{
+               this.state.instructors.push("02");
+           }
+       }
 
     }
     DatesHandler = (event) => {
