@@ -24,9 +24,9 @@ export default class EditCourse extends React.Component {
            
     }
     Handler = (event) => {
-        let nam = event.target.name;
+        let name = event.target.name;
         let val = event.target.value;
-        this.setState({ [nam]: val });
+        this.setState({ [name]: val });
 
     }
     getData=() =>{
@@ -34,7 +34,7 @@ export default class EditCourse extends React.Component {
        
         this.setState({ title: response.data.title,price: response.data.price,dates: response.data.dates,
             open:response.data.open, imagePath:response.data.imagePath, description:response.data.description,
-            duration:response.data.duration,flag:false
+            duration:response.data.duration,flag:false,instructors:response.data.instructors
 
          });
 
@@ -42,12 +42,12 @@ export default class EditCourse extends React.Component {
       })
     }
     CheckboxHandler = (event) => {
-        let nam = event.target.name
+        let name = event.target.name
         let val = event.target.checked;
-        this.setState({ [nam]: val });
+        this.setState({ [name]: val });
     }
     InstructorsHandler = (event) => {
-     
+        
         if (event.target.name === "john") {
              if( (this.state.instructors.includes("01"))){
                    this.state.instructors.pop("01");
@@ -67,14 +67,14 @@ export default class EditCourse extends React.Component {
 
     }
     DatesHandler = (event) => {
-        let nam = event.target.name;
+        let name = event.target.name;
         let val = event.target.value;
-        this.setState({ dates: { ...this.state.dates, [nam]: val } });
+        this.setState({ dates: { ...this.state.dates, [name]: val } });
     }
     PriceHandler = (event) => {
-        let nam = event.target.name;
+        let name = event.target.name;
         let val = event.target.value;
-        this.setState({ price: { ...this.state.price, [nam]: val } });
+        this.setState({ price: { ...this.state.price, [name]: val } });
     }
     
     submit = e => {
@@ -139,10 +139,15 @@ export default class EditCourse extends React.Component {
                     <h3>Instructors</h3>
                     <br />
                     <Form.Group >
-                        <Form.Check type="checkbox" label="John Tsevdos" name="john" onChange={this.InstructorsHandler}  />
+                        {(this.state.instructors.includes("01"))?
+                        <Form.Check type="checkbox" label="John Tsevdos" name="john" onChange={this.InstructorsHandler} defaultChecked />:
+                            <Form.Check type="checkbox" label="John Tsevdos" name="john" onChange={this.InstructorsHandler}  />
+                        }
                     </Form.Group>
                     <Form.Group >
-                        <Form.Check type="checkbox" label="Yiannis Nikolakopoulos" name="yiannis" onChange={this.InstructorsHandler}  />
+                       {(this.state.instructors.includes("02"))?
+                        <Form.Check type="checkbox" label="Yiannis Nikolakopoulos" name="yiannis" onChange={this.InstructorsHandler}  defaultChecked />:
+                        <Form.Check type="checkbox" label="Yiannis Nikolakopoulos" name="yiannis" onChange={this.InstructorsHandler}  />}
                     </Form.Group>
 
                     <br />
